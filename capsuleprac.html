@@ -20,23 +20,27 @@
     itsMe.hosil = "305ho";
     itsMe.home = "jip"; */
 
-    // const itsMe = {
-    //   name : "semin",
-    //   age : 20,
-    //   hosil : "305ho",
-    //   home : "jip",
-    //   sentense : "저는" + this.name + "입니다",
-    //   test : `저는 ${this.name} 입니다.`,
-    //   adult : function (){
-    //     if(this.age >= 20){
-    //       console.log("나는 성인이야");
-    //     } else {
-    //       console.log("나는 아직 성인이 아니야")
-    //     }
-    //   },
-    // }
-    // itsMe.adult();
-
+    const itsMe = {
+      name : "semin",
+      age : 20,
+      hosil : "305ho",
+      home : "jip",
+      sentense : "저는" + this.name + "입니다",
+      test : `저는 ${this.name} 입니다.`,
+      adult : function (){
+        if(this.age >= 20){
+          console.log("나는 성인이야");
+        } else {
+          console.log("나는 아직 성인이 아니야")
+        }
+      },
+      nickName : function (){
+        this.name = "이BlaBla"
+      },
+    }
+    console.table(itsMe);
+    itsMe.nickName();
+    console.table(itsMe);
     
   </script>
 </body>
