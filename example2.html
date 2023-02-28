@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+  </div>
+  <script>
+    //root 선언
+    const root = document.getElementById('root')
+
+    //최상위 부모 3분할
+    const parentDiv = ["header","main","footer"]
+    for(let i = 0; i < parentDiv.length;i++){
+      const elementDiv = document.createElement(parentDiv[i]);
+      root.appendChild(elementDiv);
+    }
+
+    //원하는 태그를 원하는 부모의 아이로 원하는 갯수만큼 만들기
+    //parentTagNum는 최상위 부모에서 원하는 태그를 숫자로 넣을것
+    function createTag (parentTagNum, tagName, tagNumbers) {
+      for(let i = 0; i < tagNumbers; i++){
+        const createElementTag = document.createElement(tagName);
+        const rootChild = root.children[parentTagNum]
+        rootChild.appendChild(createElementTag)
+      }
+    }
+
+    //main의 div 3개
+    createTag(1,"div",3);
+    //footer의 div 1개
+    createTag(2,"div",1);
+
+    //display를 정하고 정렬을 정하는 기능
+    function styleDisplayJA (parentTagNum, styleDisplay, styleFlexDirection, styleJustify, styleAlign) {
+      const rootChildStyle = root.children[parentTagNum].style;
+      rootChildStyle.display = styleDisplay;
+      rootChildStyle.flexDirection = styleFlexDirection;
+      rootChildStyle.justifyContent = styleJustify;
+      rootChildStyle.alignItems = styleAlign;
+    }
+
+    //main을 가운데 정렬함
+    styleDisplayJA(1,"flex","column","space-evenly","center");
+    //footer을 가운데 정렬함
+    styleDisplayJA(2,"flex","row","center","center");
+    
+
+    //부모 높이 넓이 백그라운드컬러 스타일지정
+    function styleParentFive (parentTagNum, styleWidth, styleHeight, styleBackColor, styleBorder) {
+      const rootParentStyle = root.children[parentTagNum].style;
+        rootParentStyle.width = styleWidth;
+        rootParentStyle.height = styleHeight;
+        rootParentStyle.backgroundColor = styleBackColor;
+        rootParentStyle.border = styleBorder;
+    }
+
+    //자식 높이 넓이 백그라운더컬러 스타일지정
+    function styleChildFive (parentTagNum, childTagNum, styleWidth, styleHeight, styleBackColor, styleBorder) {
+      const rootChildStyle = root.children[parentTagNum].children[childTagNum].style;
+      rootChildStyle.width = styleWidth;
+      rootChildStyle.height = styleHeight;
+      rootChildStyle.backgroundColor = styleBackColor;
+      rootChildStyle.border = styleBorder;
+    }
+
+    
+    //5가지 스타일 지정
+    //header 스타일 지정
+    styleParentFive(0,"100vw","22vh")
+    
+    //main 스타일 지정
+    styleParentFive(1,"100vw","40vh")
+
+    //footer 스타일 지정
+    styleParentFive(2,"100vw","30vh")
+    
+    //선 스타일 지정
+    styleChildFive(1,1,"60vw","2px","#1e1e1e")
+
+    //본문 스타일 지정
+    styleChildFive(1,2,"80vw","25vh")
+    
+    //동그라미 스타일 지정
+    styleChildFive(2,0,"80px","80px","#1e1e1e")
+    let a = root.children[2].children[0].style
+    a.borderRadius = "50%";
+    
+    //textcontent에 내용 넣기
+    function addText (parentTagNum, childTagNum, textContent) {
+      const rootChildText = root.children[parentTagNum].children[childTagNum];
+      rootChildText.textContent = textContent;
+    }
+    
+    function styleFont (parentTagNum, childTagNum, Fsize,  Fstyle, Fcolor){
+      const rootChildFont = root.children[parentTagNum].children[childTagNum].style;
+      rootChildFont.fontSize = Fsize;
+      rootChildFont.fontStyle = Fstyle;
+      rootChildFont.color = Fcolor;
+    }
+
+
+    styleFont(1,0,"2em","black")
+
+    addText(1,0,"Lorem Ipsum")
+    addText(1,2,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+    
+    const eventRound = root.children[2].children[0]
+    let switchValue = true;
+    eventRound.addEventListener("click",function (){
+      if(switchValue === false){
+        styleParentFive(0,"100vw","22vh","#1e1e1e")
+        styleParentFive(1,"100vw","40vh","#1e1e1e")
+        styleParentFive(2,"100vw","30vh","#1e1e1e")
+        styleChildFive(1,1,"60vw","2px","#ffffff")
+        styleChildFive(1,2,"80vw","25vh","#1e1e1e")
+        styleChildFive(2,0,"80px","80px","#ffffff")
+        styleFont(1,0,"2em","black")
+        styleFont(1,0,"2em","black")
+        styleFont(1,0,"2em","black")
+      }
+    });
+
+    
+    
+  </script>
+</body>
+</html>
