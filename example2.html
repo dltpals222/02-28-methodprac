@@ -103,25 +103,67 @@
       rootChildFont.color = Fcolor;
     }
 
-
+    //제목 스타일 지정
     styleFont(1,0,"2em","black")
 
     addText(1,0,"Lorem Ipsum")
     addText(1,2,"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
     
-    const eventRound = root.children[2].children[0]
+    const eventRound = root.children[2].children[0];
     let switchValue = true;
     eventRound.addEventListener("click",function (){
-      if(switchValue === false){
-        styleParentFive(0,"100vw","22vh","#1e1e1e")
-        styleParentFive(1,"100vw","40vh","#1e1e1e")
-        styleParentFive(2,"100vw","30vh","#1e1e1e")
-        styleChildFive(1,1,"60vw","2px","#ffffff")
-        styleChildFive(1,2,"80vw","25vh","#1e1e1e")
-        styleChildFive(2,0,"80px","80px","#ffffff")
-        styleFont(1,0,"2em","black")
-        styleFont(1,0,"2em","black")
-        styleFont(1,0,"2em","black")
+      if(switchValue === true){
+        //5가지 스타일 지정
+        //header 스타일 지정
+        styleParentFive(0,"100vw","22vh","#ffffff")
+        
+        //main 스타일 지정
+        styleParentFive(1,"100vw","40vh","#ffffff")
+
+        //footer 스타일 지정
+        styleParentFive(2,"100vw","30vh","#ffffff")
+        
+        //선 스타일 지정
+        styleChildFive(1,1,"60vw","2px","#1e1e1e")
+
+        //본문 스타일 지정
+        styleChildFive(1,2,"80vw","25vh","#ffffff")
+
+        //동그라미 스타일 지정
+        styleChildFive(2,0,"80px","80px","#1e1e1e")
+        let a = root.children[2].children[0].style
+        a.borderRadius = "50%";
+
+        styleFont(1,0,"2em","black","#1e1e1e")
+        styleFont(1,2,"","","#1e1e1e")
+
+        switchValue = false;
+      }else {
+        //5가지 스타일 지정
+        //header 스타일 지정
+        styleParentFive(0,"100vw","22vh","#1e1e1e");
+                
+        //main 스타일 지정
+        styleParentFive(1,"100vw","40vh","#1e1e1e");
+        
+        //footer 스타일 지정
+        styleParentFive(2,"100vw","30vh","#1e1e1e");
+                
+        //선 스타일 지정
+        styleChildFive(1,1,"60vw","2px","#ffffff");
+        
+        //본문 스타일 지정
+        styleChildFive(1,2,"80vw","25vh","#1e1e1e");
+        
+        //동그라미 스타일 지정
+        styleChildFive(2,0,"80px","80px","#ffffff");
+
+        //제목 폰트 스타일 지정
+        styleFont(1,0,"2em","black","#ffffff");
+
+        //본문 폰트 스타일 지정
+        styleFont(1,2,"","","#ffffff");
+        switchValue = true
       }
     });
 
